@@ -2,12 +2,28 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 let User = React.createClass({
-    render: function() {
-        let twitter = (this.props.twitter) ? (this.renderTwitter(this.props.twitter)) : null;
-        return (<div>{this.props.name} : {twitter}</div>)
+    getInitialState: function() {
+        return {
+            active: false
+
+        }
     },
-    renderTwitter: function(twitter) {
-        return (<a href={'http://www.twitter.com/' + twitter} >Twitter</a>)
+
+    render: function() {
+        let active = this.state.active ? "Yes" : "No";
+        return (
+            <div className="user">
+                <div>Name: {this.props.name}</div>
+                <div>Active: {active}</div>
+                <button onClick={this.toggleActive}>Toggle Active</button>
+            </div>
+        )
+    },
+
+    toggleActive: function() {
+        this.setState( {
+            active: !this.state.active
+        });
     }
 })
 
@@ -17,7 +33,7 @@ let App = React.createClass( {
         return (
             <div>
                 <h1>User List</h1>
-                <User name="User 1" twitter="handle1"/>
+                <User name="User 1"/>
                 <User name="User 2"/>
             </div>
         )
