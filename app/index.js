@@ -1,39 +1,34 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-let Counter = React.createClass({
-    getInitialState: function() {
-        return {
-            count: 0
 
-        }
-    },
-
-    componentDidMount: function() {
-        this.setState( {
-            count: this.props.count
-        })
-        setInterval(() => {
-            this.setState({
-                count: this.state.count + 1
-            })
-        }, 1000)
-    },
-
-    render: function() {
-        return (
-            <div className="count">
-                Counter: {this.state.count}
-            </div>
-        )
-    }
-
-})
+// This is a stateless functional component
+let User = function(props) {
+    return (
+        <div className="user">
+            <div>Name: {props.name}</div>
+        </div>
+    );
+}
 
 
 let App = React.createClass( {
+    getInitialState: function() {
+        return {
+            users: []
+        }
+    },
+    componentDidMount: function() {
+
+    },
     render: function() {
-        return <Counter count={5}/>
+        return (
+            <div>
+                <h1>Star Wars Characters:</h1>
+                <User name="Luke Skywalker" />
+                <User name="Darth Vader" />
+            </div>
+        )
     }
 })
 
