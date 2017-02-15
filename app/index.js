@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import { Router, Route, browserHistory, Link } from 'react-router'
+import AppLayout from './layouts/AppLayout'
 
 // This is a stateless functional component
 let User = function(props) {
@@ -47,7 +48,9 @@ let Other = () => {
 
 ReactDOM.render((
     <Router history={browserHistory}>
-        <Route path="/" component={Users} />
-        <Route path="/other" component={Other} />
+        <Route path="/" component={AppLayout}>
+            <Route path="/users" component={Users} />
+            <Route path="/other" component={Other} />
+        </Route>
     </Router>
 ), document.getElementById("root"));
