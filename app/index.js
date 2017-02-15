@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-import { Router, Route, browserHistory, Link } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router'
 import AppLayout from './layouts/AppLayout'
 
 // This is a stateless functional component
@@ -49,7 +49,7 @@ let Other = () => {
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={AppLayout}>
-            <Route path="/users" component={Users} />
+            <IndexRoute component={Users} />
             <Route path="/other" component={Other} />
         </Route>
     </Router>

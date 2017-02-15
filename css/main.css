@@ -6,3 +6,9 @@
 .count {
     font-size: 22px;
 }
+
+main {
+    border-top: 1px solid #c7bcbc;
+    margin: 20px 0px;
+    border-bottom: 1px solid #c7bcbc;
+}
