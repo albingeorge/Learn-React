@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 
 
 // This is a stateless functional component
@@ -19,14 +20,21 @@ let App = React.createClass( {
         }
     },
     componentDidMount: function() {
-
+        axios.get('http://swapi.co/api/people').then(results => {
+            this.setState({
+                users: results.data.results
+            });
+        });
     },
     render: function() {
         return (
             <div>
                 <h1>Star Wars Characters:</h1>
-                <User name="Luke Skywalker" />
-                <User name="Darth Vader" />
+                {
+                    this.state.users.map(function(obj) {
+                        return <User name={obj.name} key={obj.name} />;
+                    })
+                }
             </div>
         )
     }
