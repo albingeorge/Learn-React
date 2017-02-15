@@ -6,7 +6,6 @@ let AppLayout = function(props) {
         <div>
             <header>
                 <h1>Welcome to the Star Wars page</h1>
-                <Link to="/users">View Users</Link>
             </header>
             <main>
                 {props.children}

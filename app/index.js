@@ -1,46 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
-import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import AppLayout from './layouts/AppLayout'
-
-// This is a stateless functional component
-let User = function(props) {
-    return (
-        <div className="user">
-            <div>Name: {props.name}</div>
-        </div>
-    );
-}
+import Users from './components/Users'
+import UserProfile from './components/UserProfile'
 
 
-let Users = React.createClass( {
-    getInitialState: function() {
-        return {
-            users: []
-        }
-    },
-    componentDidMount: function() {
-        axios.get('http://swapi.co/api/people/').then(results => {
-            this.setState({
-                users: results.data.results
-            });
-        });
-    },
-    render: function() {
-        return (
-            <div>
-                <h1>Star Wars Characters:</h1>
-                    <Link to="/other">Other</Link>
-                {
-                    this.state.users.map(function(obj) {
-                        return <User name={obj.name} key={obj.name} />;
-                    })
-                }
-            </div>
-        )
-    }
-})
 
 let Other = () => {
     return <div>Other</div>
@@ -50,7 +15,7 @@ ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={AppLayout}>
             <IndexRoute component={Users} />
-            <Route path="/other" component={Other} />
+            <Route path="/profile" component={UserProfile} />
         </Route>
     </Router>
 ), document.getElementById("root"));
