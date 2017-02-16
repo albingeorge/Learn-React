@@ -15,7 +15,7 @@ ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={AppLayout}>
             <IndexRoute component={Users} />
-            <Route path="/profile" component={UserProfile} />
+            <Route path="/profile/:id" component={UserProfile} />
         </Route>
     </Router>
 ), document.getElementById("root"));

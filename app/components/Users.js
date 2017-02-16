@@ -23,8 +23,9 @@ let Users = React.createClass( {
                 <h1>Star Wars Characters:</h1>
                     <Link to="/profile">Profile</Link>
                 {
-                    this.state.users.map(function(obj) {
-                        return <User name={obj.name} key={obj.name} />;
+                    this.state.users.map(function(user) {
+                        let urlArray = user.url.split("/");
+                        return <User name={user.name} key={user.name} id={urlArray[5]} />;
                     })
                 }
             </div>
